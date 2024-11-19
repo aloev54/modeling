@@ -1,7 +1,6 @@
 
 
-if __name__== '__main__':
-	pass
+
 
 def interfaceProgramm():
 	stage = 0
@@ -22,10 +21,34 @@ def interfaceProgramm():
 
 
 def stage1():
-	pass
+	print("Программа № 1")
+	print("a - начало интервала, b - конец интервала, h - шаг интервала")
+
+	print("Введите значение a")
+	a = float(input())
+
+	print("Введите значение b")
+	b = float(input())
+
+	print("Введите значение h")
+	h = float(input())
+
+	x = []
+	n = (b-a)/h
+	i = 1
+	while True:
+		if i != n:
+			x.append(a+h*n)
+		i +=1
+
+	print(x)
+
 
 def stage2():
 	pass
 
 def stage3():
 	pass
+
+if __name__== '__main__':
+	interfaceProgramm()
