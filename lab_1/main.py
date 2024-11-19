@@ -70,3 +70,8 @@ def stage3():
 
 if __name__ == '__main__':
     interfaceProgramm()
+
+
+def clearPrint(x, y):
+    for i in range(len(x)):
+        print("x =", x[i],"\t", "y= ", y[i])
