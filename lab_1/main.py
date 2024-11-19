@@ -1,7 +1,4 @@
 
-
-
-
 def interfaceProgramm():
 	stage = 0
 
@@ -35,13 +32,15 @@ def stage1():
 
 	x = []
 	n = (b-a)/h
-	i = 1
+	i = 0
 	while True:
-		if i != n:
-			x.append(a+h*n)
+		if i != n+1:
+			x.append(a+h*i)
+		else:
+			break
 		i +=1
-
 	print(x)
+
 
 
 def stage2():
@@ -50,5 +49,6 @@ def stage2():
 def stage3():
 	pass
 
-if __name__== '__main__':
+
+if __name__ == '__main__':
 	interfaceProgramm()
