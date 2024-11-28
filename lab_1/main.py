@@ -10,7 +10,6 @@ from picar import *
 from helper import *
 
 
-
 def interfaceProgramm():
     stage = 0
 
@@ -69,8 +68,9 @@ def stage1():
 
     resultPicar4 = picarTask1(forthApproxTask1, u0, h, n)
 
-    clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
-    
+    clearPrint(u, resultAnalitical, resultEuler, resultPicar1,
+               resultPicar2, resultPicar3, resultPicar4)
+
     print()
     print("сходимость методов:")
     print("Вывод значения U до которого наблюдается полная сходимость")
@@ -118,7 +118,11 @@ def stage2():
 
     resultPicar4 = picarTask1(forthApproxTask2, u0, h, n)
 
-    clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+    # clearPrint(u, resultAnalitical, resultEuler, resultPicar1,
+    #            resultPicar2, resultPicar3, resultPicar4)
+
+    writeToFile(u, resultAnalitical, resultEuler, resultPicar1,
+               resultPicar2, resultPicar3, resultPicar4)
 
     print()
     print("сходимость методов:")
@@ -127,6 +131,7 @@ def stage2():
     print("Пикар2 U = ", getdiff(u, resultPicar2, resultAnalitical))
     print("Пикар3 U = ", getdiff(u, resultPicar3, resultAnalitical))
     print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
+
 
 def stage3():
     print("Программа № 3")
@@ -165,7 +170,8 @@ def stage3():
 
     resultPicar4 = picarTask1(forthApproxTask3, x0, h, n)
 
-    clearPrint(u, [], resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+    clearPrint(u, [], resultEuler, resultPicar1,
+               resultPicar2, resultPicar3, resultPicar4)
 
     # print()
     # print("сходимость методов:")
@@ -177,28 +183,42 @@ def stage3():
 
 
 def clearPrint(u, analitical, euler, picar1, picar2, picar3, picar4):
-    file = open ("out.txt", "w")
+    file = open("out.txt", "w")
     for i in range(len(u)):
         if analitical != []:
             print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
         else:
             print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+
 
 def clearPrint1(u, analitical, euler, picar1, picar2, picar3, picar4):
-    file = open ("out.txt", "w")
+    file = open("out.txt", "w")
     for i in range(len(u)):
         if analitical != []:
             print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
         else:
             print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+
+
+def writeToFile(column1, column2, column3, column4, column5, column6, column7):
+    res_table = zip(column1, column2, column3, column4, column5, column6, column7)
+    with open('res.txt', mode='w', encoding='utf-8') as file:
+        file.write('u\tanal\teuler\tpicar1\tpicar2\tpicar3\tpicar4\n')
+        for row in res_table:
+            file.write('\t'.join(map(str, row)) + '\n')
+    print("File written successfuly!")
 
 
 if __name__ == '__main__':
