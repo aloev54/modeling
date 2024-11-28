@@ -153,7 +153,7 @@ def stage3():
         else:
             break
         i += 1
-    print(u)
+    # print(u)
 
     resultEuler = eulerSolver(func3, u0, x0, n, h)
 
@@ -177,6 +177,18 @@ def stage3():
 
 
 def clearPrint(u, analitical, euler, picar1, picar2, picar3, picar4):
+    file = open ("out.txt", "w")
+    for i in range(len(u)):
+        if analitical != []:
+            print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
+              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
+              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+        else:
+            print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
+              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
+              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+
+def clearPrint1(u, analitical, euler, picar1, picar2, picar3, picar4):
     file = open ("out.txt", "w")
     for i in range(len(u)):
         if analitical != []:
