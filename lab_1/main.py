@@ -25,6 +25,8 @@ def interfaceProgramm():
     elif stage == 2:
         stage2()
     elif stage == 3:
+        pass
+    elif stage == 228:
         stage3()
 
 
@@ -153,15 +155,15 @@ def stage3():
         i += 1
     print(u)
 
-    resultEuler = eulerSolver(func2, u0, x0, n, h)
+    resultEuler = eulerSolver(func3, u0, x0, n, h)
 
-    resultPicar1 = picarTask1(firstApproxTask2, x0, h, n)
+    resultPicar1 = picarTask1(firstApproxTask3, x0, h, n)
 
-    resultPicar2 = picarTask1(secondApproxTask2, x0, h, n)
+    resultPicar2 = picarTask1(secondApproxTask3, x0, h, n)
 
-    resultPicar3 = picarTask1(thirdApproxTask2, x0, h, n)
+    resultPicar3 = picarTask1(thirdApproxTask3, x0, h, n)
 
-    resultPicar4 = picarTask1(forthApproxTask2, x0, h, n)
+    resultPicar4 = picarTask1(forthApproxTask3, x0, h, n)
 
     clearPrint(u, [], resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
 
