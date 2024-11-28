@@ -127,12 +127,62 @@ def stage2():
     print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
 
 def stage3():
-    pass
+    print("Программа № 3")
+    print("a - начало интервала, b - конец интервала, h - шаг интервала")
+
+    print("Введите значение a")
+    a = float(input())
+
+    print("Введите значение b")
+    b = float(input())
+
+    print("Введите значение h")
+    h = float(input())
+
+    u0 = 0
+    x0 = 0
+    u = []
+    n = int((b - a) / h)
+    # print(n)
+    i = 0
+    while True:
+        if i != n + 1:
+            u.append(a + h * i)
+        else:
+            break
+        i += 1
+    print(u)
+
+    resultEuler = eulerSolver(func2, u0, x0, n, h)
+
+    resultPicar1 = picarTask1(firstApproxTask2, x0, h, n)
+
+    resultPicar2 = picarTask1(secondApproxTask2, x0, h, n)
+
+    resultPicar3 = picarTask1(thirdApproxTask2, x0, h, n)
+
+    resultPicar4 = picarTask1(forthApproxTask2, x0, h, n)
+
+    clearPrint(u, [], resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+
+    # print()
+    # print("сходимость методов:")
+    # print("Вывод значения U до которого наблюдается полная сходимость")
+    # print("Пикар1 U = ", getdiff(u, resultPicar1, resultAnalitical))
+    # print("Пикар2 U = ", getdiff(u, resultPicar2, resultAnalitical))
+    # print("Пикар3 U = ", getdiff(u, resultPicar3, resultAnalitical))
+    # print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
 
 
 def clearPrint(u, analitical, euler, picar1, picar2, picar3, picar4):
+    file = open ("out.txt", "w")
     for i in range(len(u)):
-        print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
+        if analitical != []:
+            print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
+              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
+              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+        else:
+            print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
               "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
               round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
 
