@@ -7,6 +7,8 @@ from analitical import *
 from euler import *
 from func import *
 from picar import *
+from helper import *
+
 
 
 def interfaceProgramm():
@@ -66,6 +68,14 @@ def stage1():
     resultPicar4 = picarTask1(forthApproxTask1, u0, h, n)
 
     clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+    
+    print()
+    print("сходимость методов:")
+    print("Вывод значения U до которого наблюдается полная сходимость")
+    print("Пикар1 U = ", getdiff(u, resultPicar1, resultAnalitical))
+    print("Пикар2 U = ", getdiff(u, resultPicar2, resultAnalitical))
+    print("Пикар3 U = ", getdiff(u, resultPicar3, resultAnalitical))
+    print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
 
 
 def stage2():
@@ -107,6 +117,14 @@ def stage2():
     resultPicar4 = picarTask1(forthApproxTask2, u0, h, n)
 
     clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+
+    print()
+    print("сходимость методов:")
+    print("Вывод значения U до которого наблюдается полная сходимость")
+    print("Пикар1 U = ", getdiff(u, resultPicar1, resultAnalitical))
+    print("Пикар2 U = ", getdiff(u, resultPicar2, resultAnalitical))
+    print("Пикар3 U = ", getdiff(u, resultPicar3, resultAnalitical))
+    print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
 
 def stage3():
     pass
