@@ -79,15 +79,22 @@ class Runge:
             self.tau_res.append(tau_0)
             self.r_res.append(r_0)
 
-    def RungeSolver2(self,tau=0,tau_max=0.01,alpha =0.5):
-        self.i_res.clear()
-        self.u_res.clear()
-        self.tau_res.clear()
+    # def RungeSolver2(self,tau=0,tau_max=0.01,alpha =0.5):
+    #     self.i_res.clear()
+    #     self.u_res.clear()
+    #     self.tau_res.clear()
 
-        i_0, u_0, tau_0 = self.I_o, self.U_co, tau
+    #     i_0, u_0, tau_0 = self.I_o, self.U_co, tau
 
-        while tau_0<tau_max:
-            r_0 = self.R_p(i_0)
-            k1 = self.H * self.dI_dt(u_0,i_0,r_0)
-            q1 = self.H * self.dU_dt(i_0)
-            k2 = self.H * self.dI_dt(u_0 + self.H*alpha,i_0 + k1*alpha,r_0 + self.H*alpha)
+    #     while tau_0<tau_max:
+    #         r_0 = self.R_p(i_0)
+    #         k1 = self.H * self.dI_dt(u_0,i_0,r_0)
+    #         q1 = self.H * self.dU_dt(i_0)
+    #         k2 = self.H * self.dI_dt(u_0 + q1*alpha,i_0 + k1*alpha,r_0 + self.H*alpha)
+
+    def RungeSolver4(self,):
+        pass
+
+
+    def DrawGraphics():
+        pass
