@@ -60,11 +60,10 @@ class Runge:
         )
         return self.l_e/(2*math.pi*self.R**2*sigma_sum)
     
-    def eulerSolver(self, tau=0, tau_max=0.001,):
+    def eulerSolver(self, tau=0, tau_max=0.001):
         self.i_res.clear()
         self.u_res.clear()
         self.tau_res.clear()
-        self.r_res.clear()
 
         i_0, u_0, tau_0 = self.I_o, self.U_co, tau
 
@@ -79,3 +78,16 @@ class Runge:
             self.u_res.append(u_0)
             self.tau_res.append(tau_0)
             self.r_res.append(r_0)
+
+    def RungeSolver2(self,tau=0,tau_max=0.01,alpha =0.5):
+        self.i_res.clear()
+        self.u_res.clear()
+        self.tau_res.clear()
+
+        i_0, u_0, tau_0 = self.I_o, self.U_co, tau
+
+        while tau_0<tau_max:
+            r_0 = self.R_p(i_0)
+            k1 = self.H * self.dI_dt(u_0,i_0,r_0)
+            q1 = self.H * self.dU_dt(i_0)
+            k2 = self.H * self.dI_dt(u_0 + self.H*alpha,i_0 + k1*alpha,r_0 + self.H*alpha)
