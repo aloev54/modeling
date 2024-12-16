@@ -10,7 +10,6 @@ from picar import *
 from helper import *
 
 
-
 def interfaceProgramm():
     stage = 0
 
@@ -25,9 +24,9 @@ def interfaceProgramm():
     elif stage == 2:
         stage2()
     elif stage == 3:
-        pass
-    elif stage == 228:
         stage3()
+    # elif stage == 228:
+    #     stage3()
 
 
 def stage1():
@@ -69,8 +68,12 @@ def stage1():
 
     resultPicar4 = picarTask1(forthApproxTask1, u0, h, n)
 
-    clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
-    
+    # clearPrint(u, resultAnalitical, resultEuler, resultPicar1,
+    #            resultPicar2, resultPicar3, resultPicar4)
+
+    writeToFile1(u, resultAnalitical, resultEuler, resultPicar1,
+                 resultPicar2, resultPicar3, resultPicar4)
+
     print()
     print("сходимость методов:")
     print("Вывод значения U до которого наблюдается полная сходимость")
@@ -118,7 +121,11 @@ def stage2():
 
     resultPicar4 = picarTask1(forthApproxTask2, u0, h, n)
 
-    clearPrint(u, resultAnalitical, resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+    # clearPrint(u, resultAnalitical, resultEuler, resultPicar1,
+    #            resultPicar2, resultPicar3, resultPicar4)
+
+    writeToFile1(u, resultAnalitical, resultEuler, resultPicar1,
+                 resultPicar2, resultPicar3, resultPicar4)
 
     print()
     print("сходимость методов:")
@@ -128,18 +135,23 @@ def stage2():
     print("Пикар3 U = ", getdiff(u, resultPicar3, resultAnalitical))
     print("Пикар4 U = ", getdiff(u, resultPicar4, resultAnalitical))
 
+
 def stage3():
     print("Программа № 3")
     print("a - начало интервала, b - конец интервала, h - шаг интервала")
 
-    print("Введите значение a")
-    a = float(input())
+    # print("Введите значение a")
+    # a = float(input())
+    a = 0
 
-    print("Введите значение b")
-    b = float(input())
+    # print("Введите значение b")
+    # b = float(input())
+    # Значение разрыва где-то между 2.0031 и 2.0032
+    b = 2.0032
 
-    print("Введите значение h")
-    h = float(input())
+    # print("Введите значение h")
+    # h = float(input())
+    h = 0.0000001
 
     u0 = 0
     x0 = 0
@@ -165,7 +177,11 @@ def stage3():
 
     resultPicar4 = picarTask1(forthApproxTask3, x0, h, n)
 
-    clearPrint(u, [], resultEuler, resultPicar1, resultPicar2, resultPicar3, resultPicar4)
+    # clearPrint(u, [], resultEuler, resultPicar1,
+    #            resultPicar2, resultPicar3, resultPicar4)
+
+    writeToFile2(u, resultEuler, resultPicar1,
+                 resultPicar2, resultPicar3, resultPicar4)
 
     # print()
     # print("сходимость методов:")
@@ -177,28 +193,75 @@ def stage3():
 
 
 def clearPrint(u, analitical, euler, picar1, picar2, picar3, picar4):
-    file = open ("out.txt", "w")
+    file = open("out.txt", "w")
     for i in range(len(u)):
         if analitical != []:
             print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
         else:
             print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+
 
 def clearPrint1(u, analitical, euler, picar1, picar2, picar3, picar4):
-    file = open ("out.txt", "w")
+    file = open("out.txt", "w")
     for i in range(len(u)):
         if analitical != []:
             print("u =", round(u[i], 2), "\t", "anal= ", round(analitical[i], 2), "\t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
         else:
             print("u =", round(u[i], 2), "\t", "anal= - \t", "euler= ", round(euler[i], 2), "\t",
-              "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(picar2[i], 2), "\t", "picar3= ",
-              round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+                  "picar1= ", round(picar1[i], 2), "\t", "picar2= ", round(
+                      picar2[i], 2), "\t", "picar3= ",
+                  round(picar3[i], 2), "\t", "picar4= ", round(picar4[i], 2))
+
+
+def writeToFile1(column1, column2, column3, column4, column5, column6, column7):
+    res_table = zip(column1, column2, column3,
+                    column4, column5, column6, column7)
+    headers = ["u", "anal", "euler", "picar1", "picar2", "picar3", "picar4"]
+    with open('res.txt', mode='w', encoding='utf-8') as file:
+        file.write('\t'.join(headers)+'\n')
+        for row in res_table:
+            formatted_row = [f"{value:.3f}" for value in row]
+            file.write('\t'.join(map(str, formatted_row)) + '\n')
+    print("File written successfuly!")
+
+
+'''
+Можно написать одну ф-ию записи данных в файл для всех задач,
+но ссу за скорость, поэтому продублировал ф-ию отдельно для 3 задачи
+'''
+
+
+def writeToFile1(column1, column2, column3, column4, column5, column6, column7):
+    res_table = zip(column1, column2, column3,
+                    column4, column5, column6, column7)
+    headers = ["u", "anal", "euler", "picar1", "picar2", "picar3", "picar4"]
+    with open('res.txt', mode='w', encoding='utf-8') as file:
+        file.write('\t'.join(headers)+'\n')
+        for row in res_table:
+            formatted_row = [f"{value:.3f}" for value in row]
+            file.write('\t'.join(map(str, formatted_row)) + '\n')
+    print("File written successfuly!")
+
+
+def writeToFile2(column1, column2, column3, column4, column5, column6):
+    res_table = zip(column1, column2, column3,
+                    column4, column5, column6)
+    headers = ["x", "euler", "picar1", "picar2", "picar3", "picar4"]
+    with open('res.txt', mode='w', encoding='utf-8') as file:
+        file.write('\t'.join(headers)+'\n')
+        for row in res_table:
+            formatted_row = [f"{value:.10f}" for value in row]
+            file.write('\t'.join(map(str, formatted_row)) + '\n')
+    print("File written successfuly!")
 
 
 if __name__ == '__main__':

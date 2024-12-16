@@ -1,2 +1,6 @@
 /.idea
 __pycache__/
+out.txt
+lab_1/res.txt
+.venv/
+.DS_Store
